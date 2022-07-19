@@ -81,7 +81,12 @@ int main(int argc, char **argv) {
     double det = matrix_det(f);
     printf("Determinante de F: %f\n",det);
     
-    printf("Teste da integral Integral\n");
+   printf("Determinante de F: %f\n",det);
+    
+    printf("=====================================\n");
+
+    printf("Teste da integral Integral\nFoi usado uma funcao polinomial de 2 grau x*x com limites de [0:5]\n");
+    
     
     FX_ *ptrPow = potencia;
 
