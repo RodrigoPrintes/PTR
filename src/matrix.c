@@ -1,6 +1,9 @@
 /*
-	Implementação da ADT Matrix
-*/
+ * matrix.h
+ *
+ *  Created on: 29 de jun. de 2022
+ *      Author: Luiza Paula && Rodrigo Printes
+ */
 
 #include <math.h>
 #include <stdio.h>
@@ -26,8 +29,8 @@ Matrix matrix_value_init(unsigned int nlins, unsigned int ncols, double value) {
 			for(int j=0; j<ncols; j++)
 				VALUES(m, i, j) = value;
 	
-	return m;
    }
+    return m;
 }
 
 Matrix matrix_zeros(unsigned int nlins, unsigned int ncols) {
@@ -48,7 +51,8 @@ Matrix matrix_identity(unsigned int nlins, unsigned int ncols) {
 			for(int j=0; j<ncols; j++)
 				m.values[i*ncols + j] = (i == j) ? 1.0 : 0.0;
 	
-	return m;}
+    }
+     return m;
 }
 Matrix matrix_rand(int nlins, int ncols){
     Matrix m = matrix_nul;
@@ -60,8 +64,9 @@ Matrix matrix_rand(int nlins, int ncols){
 			for(int j=0; j<ncols; j++)
 				m.values[i*ncols + j] = rand()%100;
 	
-	return m;
+	
 	}
+    return m;
 }
 void matrix_free(Matrix *m) {
 	if(m) {
@@ -129,9 +134,11 @@ Matrix matriz_transposta(Matrix m){
 	res.ncols = m.nlins;
 	res.values = calloc(res.nlins * res.ncols, sizeof(double));
 	if(m.values) {
-	    for(i=0; i < res.nlins; i++)
-	        for(j=0; j < res.ncols; j++)
+	    for(i=0; i < res.nlins; i++){
+	        for(j=0; j < res.ncols; j++){
 				VALUES(res, i,j) = VALUES(m, j,i);
+            }
+        }
 		return res;
 	}
 	else
@@ -173,7 +180,7 @@ Matrix matrix_sub_escalar(double c, Matrix m) {
 }
 
 Matrix matrix_mult(Matrix a,Matrix b){
-    int i,j,k,cont;
+    int i,j,k;
     Matrix res;
     res.nlins = a.nlins;
     res.ncols = b.ncols;
@@ -222,8 +229,9 @@ Matrix matrix_sub(Matrix a, Matrix b){
 			for(int j=0; j<res.ncols; j++)
 				res.values[i*res.ncols + j] = a.values[i*a.ncols + j] - b.values[i*b.ncols + j];
 	
-	    return res;
+	   
 	}
+     return res;
 }
 double matrix_det(Matrix m){
     int i,j,k;
@@ -232,7 +240,7 @@ double matrix_det(Matrix m){
     double a;
     double pivo= 0;
     if(m.nlins == m.ncols){
-    for(i = 0; i < m.nlins - 1; i++)
+        for(i = 0; i < m.nlins - 1; i++)
     {
         if(m.values[i*m.ncols + i]  == 0)
         {
@@ -271,12 +279,14 @@ double matrix_det(Matrix m){
     temp = 1.0;
     for(i = 0; i < m.nlins; i++)
         temp *= m.values[i*m.ncols + i] ;
+    
 
     if(count % 2 == 0)
         return temp;
-    else
+    else{
         a = -1.0 * temp;
         return a ;
+    }
 
     return 0;
 }

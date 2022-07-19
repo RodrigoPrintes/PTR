@@ -1,14 +1,19 @@
 /*
-	main.c: Matrix test program
-	author:luiza Paula Moreira Leão
-	date: july, 2022
-*/
+ * matrix.h
+ *
+ *  Created on: 29 de jun. de 2022
+ *      Author: Luiza Paula && Rodrigo Printes
+ */
 
 #include <stdio.h>
 #include "matrix.h"
 #include "integral.h"
+#include <math.h>
+
 static void print_matrix(const char *const name, const Matrix m) {
+
 	printf("%s(%u,%u) = [\n", name, m.nlins, m.ncols);
+
 	for(int i = 0; i < matrix_nlins(m); i++) {
 		printf("\t[%4.4f", matrix_value(m, i, 0));
 		for(int j = 1; j < matrix_ncols(m); j++) {
@@ -22,7 +27,10 @@ static void print_matrix(const char *const name, const Matrix m) {
 double potencia(double b){
 	return b*b;
 }
+double sin(double x){
 
+    return 0.0;
+}
 int main(int argc, char **argv) {
     
     printf("Main da Matrix\n");
@@ -66,20 +74,21 @@ int main(int argc, char **argv) {
     Matrix matrix_inv =  matrix_inversa(e);
     print_matrix("Matrix inversa de E", matrix_inv);
     
+    printf("Calculo do determinante:\n");
     Matrix f = matrix_rand(3,3);
     print_matrix("F",f);
     
     double det = matrix_det(f);
     printf("Determinante de F: %f\n",det);
     
-    printf("Main da Integral\n");
+    printf("Teste da integral Integral\n");
     
     FX_ *ptrPow = potencia;
 
 
    
     double s2 = integral_Trapezio( 0,  5 ,  ptrPow);
-    printf("%f " ,s2);
+    printf("%f \n" ,s2);
 
     return 0 ;
 
