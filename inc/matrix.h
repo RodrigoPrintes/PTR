@@ -31,7 +31,8 @@ typedef struct Matrix {
 extern Matrix matrix_nul;
 
 Matrix matrix_zeros(unsigned int nlins, unsigned int ncols);
-Matrix matrix_value_init(unsigned int nlins, unsigned int ncols, double value)
+Matrix matrix_value_init(unsigned int nlins, unsigned int ncols, double value);
+double matrix_getValue(Matrix m, int i, int j);
 Matrix matrix_ones(unsigned int nlins, unsigned int ncols);
 Matrix matrix_identity(unsigned int nlins, unsigned int ncols);
 Matrix matrix_copy(Matrix m);
