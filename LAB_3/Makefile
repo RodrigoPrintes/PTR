@@ -17,8 +17,8 @@ CC=gcc
 CFLAGS=-Wall -O3 -I $(incdir)
 CPPFLAGS=
 LDFLAGS=-L $(libdir)
-LDLIBS=-ggdb
-#LDLIBS=-lm -lpthread -lstdc++
+LDLIBS=-lm -ggdb
+#DLIBS=-lm -lpthread -lstdc++
 
 all: $(PRJ)
 

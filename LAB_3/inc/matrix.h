@@ -48,7 +48,7 @@ Matrix matrix_sub(Matrix a, Matrix b);
 Matrix matrix_mult(Matrix a,Matrix b);
 
 void matrix_free(Matrix *m);
-double matrix_value(Matrix m, int i, int j);
+void matrix_value(Matrix m, int i, int j, double value);
 unsigned int matrix_nlins(Matrix m);
 unsigned int matrix_ncols(Matrix m);
 double matrix_det(Matrix m);
