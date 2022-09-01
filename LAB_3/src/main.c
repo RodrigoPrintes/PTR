@@ -6,10 +6,11 @@
 */
 
 #include <stdio.h>
+#include <math.h>
 #include "matrix.h"
 #include "integral.h"
 #include <pthread.h>
-
+#include "robo_xdet.h"
 
 void *printH(void *threadid){
 	long id;
@@ -32,8 +33,8 @@ int main(int argc, char **argv) {
 	printf("Main: finalizando\n");
 
 	*/ 
+	
 
-	Matrix *xT = NULL; 
 
 
 	return 0;
