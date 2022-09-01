@@ -18,6 +18,11 @@ Matrix matrix_nul = {.nlins=0, .ncols=0, .values=NULL};
 void matrix_value(Matrix m, int i, int j, double value) {
    VALUES(m, i, j) = value;
 }
+double matrix_value_1(Matrix m, int i, int j) {
+	return VALUES(m, i, j);
+}
+
+
 
 Matrix matrix_value_init(unsigned int nlins, unsigned int ncols, double value) {
 	Matrix m = matrix_nul;

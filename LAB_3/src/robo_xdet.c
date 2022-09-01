@@ -6,6 +6,7 @@
 #include <math.h>
 
 
+#define X3(m ,i,j)(matrix_getValue(m,i,j))
 
 Matrix robo_xdet(Matrix x, Matrix u){
 
@@ -14,8 +15,8 @@ Matrix robo_xdet(Matrix x, Matrix u){
     x_aux.ncols= 2;
     x_aux.nlins= 3;
 
-    matrix_value(x_aux,0,0,cos(matrix_getValue(x,2,0)));
-    matrix_value(x_aux,1,0,sin(matrix_getValue(x,2,0)));
+    matrix_value(x_aux,0,0,cos(X3(x,2,0)));
+    matrix_value(x_aux,1,0,sin(X3(x,2,0)));
 
     matrix_value(x_aux, 2,0,0);
     matrix_value(x_aux, 0,1,0);

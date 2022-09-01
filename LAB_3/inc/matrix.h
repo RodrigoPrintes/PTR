@@ -53,4 +53,5 @@ unsigned int matrix_nlins(Matrix m);
 unsigned int matrix_ncols(Matrix m);
 double matrix_det(Matrix m);
 
+double matrix_value_1(Matrix m, int i, int j) ;
 #endif
