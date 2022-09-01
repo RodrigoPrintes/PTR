@@ -7,7 +7,7 @@
 #define R  0.6*0.5
 #define X3(m ,i,j)(matrix_getValue(m,i,j))
 
-Matrix linear_L(Matrix x){
+Matrix L(Matrix x){
     Matrix L;
     
     L.ncols = 2;
@@ -21,7 +21,11 @@ Matrix linear_L(Matrix x){
     return L;
 }
 
+Matrix L_inversa(Matrix x){
+    return matrix_inversa(L(x));
+}
+
 Matrix robo_ydet(Matrix x, Matrix u){
-    return matrix_mult(linear_L(x),u);
+    return matrix_mult(L(x),u);
 }
 
