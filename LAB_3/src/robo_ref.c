@@ -36,7 +36,7 @@ Matrix robo_ref(double t){
 
 }
 
-Matrix robo_ModeloRef(Matrix ref){
+Matrix robo_ModeloRef(Matrix ref, double t){
     // gera a matrix de entrada ?? reff
     // cospe ym e outra ym_DET
     /*
@@ -45,5 +45,6 @@ Matrix robo_ModeloRef(Matrix ref){
         * Ym_det = [y_detmx y_detmy]T
         * 
     */
+
 
 }
