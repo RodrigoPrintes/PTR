@@ -8,7 +8,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "integral.h"
 #include "matrix.h"
 
 Matrix matrix_nul = {.nlins=0, .ncols=0, .values=NULL};
@@ -132,7 +132,7 @@ Matrix matrix_inversa(Matrix m){
         return matrix_nul;
     }
 }
-Matrix matriz_transposta(Matrix m){
+Matrix matrix_transposta(Matrix m){
     int i,j;
     Matrix res;
 	res.nlins = m.ncols;
@@ -239,6 +239,7 @@ Matrix matrix_sub(Matrix a, Matrix b){
      return res;
 }
 double matrix_det(Matrix m){
+
     int i,j,k;
     double temp;
     int count=0;
@@ -294,4 +295,21 @@ double matrix_det(Matrix m){
     }
 
     return 0;
+}
+double fx(double d){return d;}
+Matrix matrix_integral(double a, double b, Matrix x){
+    /*Intgegração de matrix*/
+    FX_ *f_x = fx;
+    Matrix m = matrix_nul;
+	m.values = malloc(x.nlins * x.ncols * sizeof(double));
+	if(m.values) {
+		m.nlins = x.nlins;
+		m.ncols = x.ncols;
+		for(int i=0; i<x.nlins; i++)
+			for(int j=0; j<x.ncols; j++)
+                   m.values[i*m.ncols + j] = x.values[i*m.ncols + j]*integral_Trapezio(a,b,f_x);
+				
+	
+    }
+     return m;
 }

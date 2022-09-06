@@ -41,7 +41,7 @@ Matrix matrix_mult_escalar(double c, Matrix m);
 Matrix matrix_div_escalar(double c, Matrix m);
 Matrix matrix_soma_escalar(double c, Matrix m);
 Matrix matrix_sub_escalar(double c, Matrix m);
-Matrix matriz_transposta(Matrix m);
+Matrix matrix_transposta(Matrix m);
 Matrix matrix_rand(int nlins, int ncols);
 Matrix matrix_soma(Matrix a, Matrix b);
 Matrix matrix_sub(Matrix a, Matrix b);
@@ -54,4 +54,7 @@ unsigned int matrix_ncols(Matrix m);
 double matrix_det(Matrix m);
 
 double matrix_value_1(Matrix m, int i, int j) ;
+
+Matrix matrix_integral(double a, double b, Matrix x){
+
 #endif
