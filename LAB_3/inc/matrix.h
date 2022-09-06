@@ -55,6 +55,6 @@ double matrix_det(Matrix m);
 
 double matrix_value_1(Matrix m, int i, int j) ;
 
-Matrix matrix_integral(double a, double b, Matrix x){
+Matrix matrix_integral(double a, double b, Matrix x);
 
 #endif
