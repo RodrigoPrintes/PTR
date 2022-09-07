@@ -12,6 +12,10 @@
 #include "integral.h"
 #include <pthread.h>
 #include "robo_xdet.h"
+#include "linear_robo.h"
+#include "robo_controller.h"
+#include "robo_ref.h"
+#include "robo.h"
 
 void *printH(void *threadid){
 	long id;
