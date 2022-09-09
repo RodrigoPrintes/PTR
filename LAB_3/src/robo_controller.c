@@ -1,6 +1,8 @@
 #include "matrix.h"
 
-
+/*
+** recebe as referencias e cospe v(t) e a saida
+ */
 Matrix controller_v(Matrix y,Matrix Ym, Matrix Ym_det,double alpha1, double alpha2){
      Matrix v;
 

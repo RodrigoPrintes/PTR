@@ -14,11 +14,9 @@ Matrix x(double xc, double yc, double teta){
 
     return x;
 }
-// Matrix integral_xdet(Matrix x, Matrix u ){
-//     Matrix x_det = robo_xdet(x,u);
+// Matrix integral_xdet(Matrix x, Matrix u )
+//??????
 
-//    // matrix_integral();
-// }
 /*Entrada do sistema achar um lugar adequedo para colocar
 -> implementando aqui por comodidade
 -> v = velocidade linear do robo

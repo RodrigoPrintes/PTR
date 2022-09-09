@@ -2,7 +2,7 @@
  * matrix.h
  *
  *  Created on: 29 de jun. de 2022
- *      Author: Luiza Paula && Rodrigo Printes
+ *  Author: Luiza Paula && Rodrigo Printes
  */
 
 /* ADT Matrix */
