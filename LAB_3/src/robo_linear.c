@@ -1,11 +1,18 @@
-/*
-    * Referente ao derivada de y y_point = L(x)u(t)
-*/
+
+
+#include "matrix.h"
 #include "matrix.h"
 #include <math.h>
 
 #define R  0.6*0.5
 #define X3(m ,i,j)(matrix_getValue(m,i,j))
+
+/*
+   *
+   * Cabeçalho
+   * 
+*/
+
 
 Matrix L(Matrix x){
     Matrix L;
@@ -29,3 +36,10 @@ Matrix robo_ydet(Matrix x, Matrix u){
     return matrix_mult(L(x),u);
 }
 
+Matrix robo_ydetLin(Matrix v_t){
+   return v_t;
+}
+
+Matrix u (Matrix v_t, Matrix x){
+   return matrix_mult(L_inversa(x), v_t);     
+}
