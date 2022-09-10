@@ -297,6 +297,8 @@ double matrix_det(Matrix m){
     return 0;
 }
 double fx(double d){return d;}
+
+
 Matrix matrix_integral(double a, double b, Matrix x){
     /*Intgegração de matrix*/
     FX_ *f_x = fx;
@@ -311,5 +313,5 @@ Matrix matrix_integral(double a, double b, Matrix x){
 				
 	
     }
-        return m;
+    return m;
 }

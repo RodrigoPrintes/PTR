@@ -52,7 +52,7 @@ Matrix robo_xdet(Matrix x, Matrix u){
 }
 
 
-Matrix x(double xc, double yc, double teta){
+Matrix x_al(double xc, double yc, double teta){
     Matrix x; x.ncols = 1; x.nlins = 3;
 
     matrix_value(x, 0, 0, xc);
@@ -61,20 +61,10 @@ Matrix x(double xc, double yc, double teta){
 
     return x;
 }
-// Matrix integral_xdet(Matrix x, Matrix u )
-//??????
+Matrix x( Matrix x_det, double limInf, double limSup){
 
-/*Entrada do sistema achar um lugar adequedo para colocar
--> implementando aqui por comodidade
--> v = velocidade linear do robo
--> w = velocidade angular do sistema
-*/
+    return matrix_integral(limInf,limSup,x_det);
 
-// Matrix u(double v, double w){
-//     Matrix u ; u.ncols = 1 ; u.nlins  = 3;
-
-//     matrix_value(u,0,0,v);
-//     matrix_value(u,0,1,w);
-// }
+}
 
 
