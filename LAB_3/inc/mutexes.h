@@ -2,7 +2,7 @@
     Define o monitor para acesso às variáveis
 */
 
-// #pragma once
+#pragma once
 
 #include "matrix.h"
 

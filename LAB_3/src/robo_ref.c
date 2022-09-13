@@ -46,7 +46,7 @@ Matrix robo_ModeloRef(Matrix ref, double t, double alpha1, double alpha2, Matrix
 
 Matrix robo_ym(Matrix ym_det, double limInf, double limSup){
 
-   return matrix_integral(ym_det,limInf,limSup);
+   return matrix_integral(limInf,limSup,ym_det);
 }
 
 

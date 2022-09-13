@@ -7,6 +7,9 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <time.h>
+#include "mutexes.h"
+
 
 
 // void *printH(void *threadid){

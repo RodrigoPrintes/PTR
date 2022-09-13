@@ -18,7 +18,7 @@ CFLAGS=-Wall -O3 -I $(incdir)
 CPPFLAGS=
 LDFLAGS=-L $(libdir)
 LDLIBS=-lm -ggdb
-#DLIBS=-lm -lpthread -lstdc++
+DLIBS= -lm -lpthread -lstdc++
 
 all: $(PRJ)
 
