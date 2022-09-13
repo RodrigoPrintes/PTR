@@ -1,6 +1,6 @@
 /*
 	
-	author: Rodrigo Printes
+	author: Mj RD
 	date: may, 2022
 	license: CC BY-SA
 */
@@ -9,7 +9,7 @@
 #include <math.h>
 #include <time.h>
 #include "mutexes.h"
-
+#include "buffer_circ.h"
 
 
 // void *printH(void *threadid){
@@ -40,14 +40,22 @@
 int main(int argc, char **argv) {
 
 
-
-	// Matrix m; m.ncols = 3; m.nlins = 3;
-
-	// m = matrix_zeros(3,3);
-	// matrix_value(m,2,0,1);
-    // print_matrix("M",m);
-
+	buffer_circ_t b;
+	int data;
 	
+	buffer_init(&b);
+	buffer_print(&b);
+
+	for(int i =1; i<=6; i++) {
+		buffer_add(&b, i);
+		buffer_print(&b);
+	}
+
+	for(int i=1; i<=5; i++) {
+		buffer_remove(&b, &data);
+		printf("data:%d\n", data);
+		buffer_print(&b);
+	}
 
 	return 0;
 }

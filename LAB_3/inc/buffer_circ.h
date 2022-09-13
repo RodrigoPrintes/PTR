@@ -1,59 +1,29 @@
-/**
- * @brief Simple circular buffer implementation with basic management functions
- */
+#define BUFFER_SIZE 10
 
-#ifndef __BUFFER_CIRC_H
-#define __BUFFER_CIRC_H
 
-#define BUFFER_SIZE 2
-
-/** circular buffer management structure */
-typedef struct {
-  unsigned char data[BUFFER_SIZE];
-  unsigned int  items;
-  unsigned int  wr_ptr;
-  unsigned int  rd_ptr;
+/** circular buffer */
+typedef struct buffer{
+  unsigned int  data[BUFFER_SIZE];
+  unsigned int  size;
+  unsigned int  in;
+  unsigned int  out;
 } buffer_circ_t;
 
 
+int buffer_add(buffer_circ_t *b,int data);
 
-/**
- * @brief insert a stream data with size lenght to the buffer
- */
-int buffer_insert(buffer_circ_t *b,void *data, unsigned int size);
+int buffer_remove(buffer_circ_t *b, int *data);
 
-/**
- *  @brief retrieves a stream of dat with specified size
- */
-int buffer_retrieve(buffer_circ_t *b, void *data, unsigned int size);
+void buffer_print(buffer_circ_t *b);
 
-/**
- *  @brief check if buffer is already full
- */
-int buffer_full(buffer_circ_t *b);
-
-/**
- * @brief check if a data stream with specified size will full the buffer
- */
-int buffer_will_full(buffer_circ_t *b, unsigned int size);
-
-/**
- * @brief makes the buffer empty
- */
-int buffer_flush(buffer_circ_t *b);
-
-/**
- * @brief  check if buffer is empty
- */
-int buffer_empty(buffer_circ_t *b);
-
-/** declare a initialized circular buffer */
-#define CIRCULAR_BUFFER_DECLARE(name)  \
-        buffer_circ_t name = {         \
+/*
+#define CIRCULAR_BUFFER_DECLARE(b)  \
+        buffer_circ_t b = {         \
           .data = {0},                 \
-          .items = 0,                  \
-          .wr_ptr = 0,                 \
-          .rd_ptr = 0,                 \
-        }
+          .size = 0,                  \
+          .in = 0,                 \
+          .out = 0,                 \
+        }*/
 
-#endif
+int buffer_init(buffer_circ_t *b);
+
