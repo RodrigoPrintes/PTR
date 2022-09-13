@@ -11,7 +11,6 @@ sem_t exclusao;
 sem_t cheio;
 sem_t vazio;
 
-
 int msleep(long msec) {
 	struct timespec ts;
     int res;
@@ -32,29 +31,29 @@ int msleep(long msec) {
 }
 
 int produce(void) {
-	static int data = 0;
+	static double data = 0;
 
 	msleep(random() % 3000);
 	data++;
-	printf("produce(): %d\n", data);
+	printf("produce(): %f\n", data);
 	return data;
 }
 
-void consume(int data) {
-	printf("consume(): %d\n", data);
+void consume(double data) {
+	printf("consume(): %f\n", data);
 	msleep(random() % 3000);
 }
 
 void *producer(void *buf) {
 	printf("producer()\n");
 	
-	int data;
+	double data;
 	for(;;) {
 		data = produce();
 
 		sem_wait(&cheio);
 			sem_wait(&exclusao);
-				buffer_add(buf, data);
+				buffer_append(buf, data);
 				buffer_print(buf);
 			sem_post(&exclusao);
 		sem_post(&vazio);
@@ -64,11 +63,11 @@ void *producer(void *buf) {
 void *consumer(void *buf) {
 	printf("consumer()\n");
 
-	int data;
+	double data;
 	for(;;) {
 		sem_wait(&vazio);
 			sem_wait(&exclusao);
-				buffer_remove(buf, &data);
+				buffer_take(buf, &data);
 				buffer_print(buf);
 			sem_post(&exclusao);
 		sem_post(&cheio);
@@ -77,13 +76,25 @@ void *consumer(void *buf) {
 	}
 }
 
+/*
+void *display(void *buf) {
+	printf("display()\n");
 
-void teste( ){
+	for(;;) {
+		sem_wait(&exclusao);
+			buffer_print(buf);
+		sem_post(&exclusao);
+		msleep(500);
+	}
+}
+*/
 
+void teste() {
 	pthread_t cons_hdl;
 	pthread_t prod_hdl;
 //	pthread_t disp_hdl;
-	buffer_circ_t buf;
+
+	buffer_t buf;
 
 	buffer_init(&buf);
 
@@ -101,6 +112,7 @@ void teste( ){
 
 	sem_destroy(&cheio);
 	sem_destroy(&vazio);
-	sem_destroy(&exclusao);
+	sem_destroy(&exclusao);	
+
 
 }

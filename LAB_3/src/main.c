@@ -5,17 +5,7 @@
 	license: CC BY-SA
 */
 
-#include <stdio.h>
-#include <math.h>
-#include <time.h>
-#include "mutexes.h"
-#include <errno.h>
-#include <semaphore.h>
-#include <stdlib.h>
-
 #include "prod_cons.h"
-#include <pthread.h>
-#include "buffer_circ.h"
 
 // void *printH(void *threadid){
 // 	long id;

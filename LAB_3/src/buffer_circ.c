@@ -1,56 +1,38 @@
-#include "buffer_circ.h"
+
 #include <stdio.h>
 #include <string.h>
+#include "buffer_circ.h"
 
 
-int buffer_init(buffer_circ_t *b){
-    b->in  = 0;
+void buffer_init(buffer_t *b) {
+    b->in = 0;
     b->out = 0;
-    b->size= 0;
-    memset(b->data, 0 , BUFFER_SIZE*sizeof(int));
+    b->size = 0;
+    memset(b->buf, 0, BUFFER_SIZE*sizeof(double));
 }
-int buffer_add(buffer_circ_t *b, int data)
-{
-  // int ret = -1;
-  
-  // if(b == NULL) {
-  //   return(ret);
-  // }
 
-  if(b->size < BUFFER_SIZE){
-    b->data[b->in] = data;
-    b->in  = (b->in+1)% BUFFER_SIZE;
-    b->size++;
-
-   // ret = 0;
-  }
-
-  return 0;
+void buffer_append(buffer_t *b, double item) {
+    if(b->size < BUFFER_SIZE) {
+        b->buf[b->in] = item;
+        b->in = (b->in + 1) % BUFFER_SIZE;
+        b->size++;
+    }
 }
-int buffer_remove(buffer_circ_t *b, int *data)
-{
-  // int ret = -1;
-  // if(b == NULL) {
-  //   return(ret);
-  // }
 
-  if(b->size > 0 ){
-    *data = b->data[b->out];
-    b->data[b->out] = 0;
-    b->out = (b->out+1 ) % BUFFER_SIZE;
-    b->size--;
-
-   // ret = 0;
-  }
-
-  return 0 ;
+void buffer_take(buffer_t *b, double *item) {
+    if(b->size > 0) {
+        *item = b->buf[b->out];
+        b->buf[b->out] = 0;
+        b->out = (b->out + 1) % BUFFER_SIZE;
+        b->size--;
+    }
 }
- 
 
-void buffer_print(buffer_circ_t *b) {
+void buffer_print(buffer_t *b) {
     printf("Buffer(in:%d, out:%d, size:%d) [", b->in, b->out, b->size);
-    printf("%d", b->data[0]);
+    printf("%f", b->buf[0]);
     for(int i=1; i<BUFFER_SIZE; i++)
-        printf(", %d", b->data[i]);
+        printf(", %f", b->buf[i]);
     printf("]\n");
 }
+

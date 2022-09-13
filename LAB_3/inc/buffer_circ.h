@@ -1,29 +1,17 @@
+/*
+    Circular Buffer
+*/
+
 #define BUFFER_SIZE 2
 
+typedef struct buffer {
+    int in;
+    int out;
+    int size;
+    double buf[BUFFER_SIZE];
+} buffer_t;
 
-/** circular buffer */
-typedef struct buffer{
-  unsigned int  data[BUFFER_SIZE];
-  unsigned int  size;
-  unsigned int  in;
-  unsigned int  out;
-} buffer_circ_t;
-
-
-int buffer_add(buffer_circ_t *b,int data);
-
-int buffer_remove(buffer_circ_t *b, int *data);
-
-void buffer_print(buffer_circ_t *b);
-
-/*
-#define CIRCULAR_BUFFER_DECLARE(b)  \
-        buffer_circ_t b = {         \
-          .data = {0},                 \
-          .size = 0,                  \
-          .in = 0,                 \
-          .out = 0,                 \
-        }*/
-
-int buffer_init(buffer_circ_t *b);
-
+void buffer_init(buffer_t *b);
+void buffer_append(buffer_t *b, double item);
+void buffer_take(buffer_t *b, double *item);
+void buffer_print(buffer_t *b);
