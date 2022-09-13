@@ -9,8 +9,13 @@
 #include <math.h>
 #include <time.h>
 #include "mutexes.h"
-#include "buffer_circ.h"
+#include <errno.h>
+#include <semaphore.h>
+#include <stdlib.h>
 
+#include "prod_cons.h"
+#include <pthread.h>
+#include "buffer_circ.h"
 
 // void *printH(void *threadid){
 // 	long id;
@@ -36,26 +41,7 @@
 
 
 
-
 int main(int argc, char **argv) {
-
-
-	buffer_circ_t b;
-	int data;
-	
-	buffer_init(&b);
-	buffer_print(&b);
-
-	for(int i =1; i<=6; i++) {
-		buffer_add(&b, i);
-		buffer_print(&b);
-	}
-
-	for(int i=1; i<=5; i++) {
-		buffer_remove(&b, &data);
-		printf("data:%d\n", data);
-		buffer_print(&b);
-	}
-
+	teste();
 	return 0;
 }
