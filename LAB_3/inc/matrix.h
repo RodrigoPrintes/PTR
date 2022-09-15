@@ -56,5 +56,6 @@ double matrix_det(Matrix m);
 double matrix_value_1(Matrix m, int i, int j) ;
 
 Matrix matrix_integral(double a, double b, Matrix x);
-
+void matrix_print_name (char *name ,Matrix m);
+void matrix_print (Matrix m);
 #endif

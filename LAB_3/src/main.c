@@ -1,37 +1,20 @@
-/*
-	
+/*	
 	author: Mj RD
-	date: may, 2022
+	date: sep, 2022
 	license: CC BY-SA
 */
 
 #include "prod_cons.h"
-
-// void *printH(void *threadid){
-// 	long id;
-// 	id = (long)threadid;//conversão de void pra long
-// 	printf("Thread %ld: Olá mundo!\n", id);
-// 	pthread_exit(NULL); //finalização da thread
-// }
-// static void print_matrix(const char *const name, const Matrix m) {
-
-// 	printf("%s(%u,%u) = [\n", name, m.nlins, m.ncols);
-
-// 	for(int i = 0; i < matrix_nlins(m); i++) {
-// 		printf("\t[%4.4f", matrix_value_1(m, i, 0));
-// 		for(int j = 1; j < matrix_ncols(m); j++) {
-// 			printf(", %4.4f", matrix_value_1(m, i, j));
-// 		}
-// 		puts("]");
-// 	}
-// 	puts("]");
-// }
-
-
-
+#include "mutexes.h"
+#include <time.h>
+#include <stdio.h>
+#include "robo_ref.h"
 
 
 int main(int argc, char **argv) {
-	teste();
+	
+	mutexes_init();
+	ref_thread(NULL);
+	
 	return 0;
 }

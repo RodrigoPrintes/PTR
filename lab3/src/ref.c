@@ -2,4 +2,4 @@
     Implementação de Ref
 */
 
-void *ref_manthread(void *);
+void *ref_thread(void *);

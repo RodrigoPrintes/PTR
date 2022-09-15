@@ -51,6 +51,7 @@ void mutexes_setY(Matrix y) {
     pthread_mutex_lock(&mutexY);
         Y = y;
     pthread_mutex_unlock(&mutexY);
+    
 }
 
 void mutexes_getY(Matrix *y) {

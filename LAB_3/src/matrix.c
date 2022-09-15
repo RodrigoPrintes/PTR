@@ -315,3 +315,29 @@ Matrix matrix_integral(double a, double b, Matrix x){
     }
     return m;
 }
+
+
+void matrix_print (Matrix m){
+	printf("(%u,%u) = [\n", m.nlins, m.ncols);
+
+	for(int i = 0; i < matrix_nlins(m); i++) {
+		printf("\t[%4.4f", matrix_value_1(m, i, 0));
+		for(int j = 1; j < matrix_ncols(m); j++) {
+			printf(", %4.4f", matrix_value_1(m, i, j));
+		}
+		puts("]");
+	}
+	puts("]");
+}
+void matrix_print_name (char *name ,Matrix m){
+	printf("%s(%u,%u) = [\n", name, m.nlins, m.ncols);
+
+	for(int i = 0; i < matrix_nlins(m); i++) {
+		printf("\t[%4.4f", matrix_value_1(m, i, 0));
+		for(int j = 1; j < matrix_ncols(m); j++) {
+			printf(", %4.4f", matrix_value_1(m, i, j));
+		}
+		puts("]");
+	}
+	puts("]");
+}
