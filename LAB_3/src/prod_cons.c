@@ -11,6 +11,12 @@ sem_t exclusao;
 sem_t cheio;
 sem_t vazio;
 
+/*Produtores*/
+sem_t producerRef, procudeY, produceYm, produceYmdot, produceV, produceX, produceU;
+/*Consumidores*/
+sem_t consumerRef, consumerY, consumerYm, consumeYmdot, consumeV, consumeX, consumeU;
+
+
 int msleep(long msec) {
 	struct timespec ts;
     int res;
@@ -35,12 +41,12 @@ int produce(void) {
 
 	msleep(random() % 3000);
 	data++;
-	printf("produce(): %f\n", data);
+	// printf("produce(): %f\n", data);
 	return data;
 }
 
 void consume(double data) {
-	printf("consume(): %f\n", data);
+	// printf("consume(): %f\n", data);
 	msleep(random() % 3000);
 }
 
@@ -76,18 +82,6 @@ void *consumer(void *buf) {
 	}
 }
 
-/*
-void *display(void *buf) {
-	printf("display()\n");
-
-	for(;;) {
-		sem_wait(&exclusao);
-			buffer_print(buf);
-		sem_post(&exclusao);
-		msleep(500);
-	}
-}
-*/
 
 void teste() {
 	pthread_t cons_hdl;

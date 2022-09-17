@@ -3,7 +3,6 @@
 */
 
 #include <pthread.h>
-
 #include "matrix.h"
 #include "mutexes.h"
 
@@ -11,7 +10,7 @@ static Matrix Ref;
 static Matrix Y;
 static Matrix Ym;
 static Matrix Ymdot;
-static Matrix V;
+static Matrix V; 
 static Matrix U;
 static Matrix X;
 
@@ -65,6 +64,12 @@ void mutexes_setYmdot(Matrix ymdot) {
     Ymdot = ymdot;
     pthread_mutex_unlock(&mutexYmdot);
 }
+void mutexes_setYm(Matrix ym) {
+    pthread_mutex_lock(&mutexYm);
+    Ym = ym;
+    pthread_mutex_unlock(&mutexYm);
+}
+
 
 void mutexes_setYm(Matrix  ym);
 void mutexes_getYm(Matrix *ym);
