@@ -11,10 +11,6 @@ sem_t exclusao;
 sem_t cheio;
 sem_t vazio;
 
-/*Produtores*/
-sem_t producerRef, procudeY, produceYm, produceYmdot, produceV, produceX, produceU;
-/*Consumidores*/
-sem_t consumerRef, consumerY, consumerYm, consumeYmdot, consumeV, consumeX, consumeU;
 
 
 int msleep(long msec) {

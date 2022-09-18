@@ -309,13 +309,11 @@ Matrix matrix_integral(double a, double b, Matrix x){
 		m.ncols = x.ncols;
 		for(int i=0; i<x.nlins; i++)
 			for(int j=0; j<x.ncols; j++){
-                   m.values[i*m.ncols + j] = x.values[i*m.ncols + j]*integral_Trapezio(a,b,f_x);}
-				
-	
+                   m.values[i*m.ncols + j] = x.values[i*m.ncols + j]*integral_Trapezio(a,b,f_x);
+        }
     }
     return m;
 }
-
 
 void matrix_print (Matrix m){
 	printf("(%u,%u) = [\n", m.nlins, m.ncols);
