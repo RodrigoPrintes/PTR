@@ -51,9 +51,9 @@ Matrix robo_x(Matrix X , Matrix xaux, double t)
 {
     Matrix x = matrix_zeros(3,1);
 
-    double x1  =(t)*(matrix_getValue(X,0,0)+matrix_getValue(xaux,0,0)/2),
-           x2  =(t)*(matrix_getValue(X,1,0)+matrix_getValue(xaux,1,0)/2),
-           x3  =(t)*(matrix_getValue(X,2,0)+matrix_getValue(xaux,2,0)/2);
+    double x1  =(t)*((matrix_getValue(X,0,0)+matrix_getValue(xaux,0,0))/2),
+           x2  =(t)*((matrix_getValue(X,1,0)+matrix_getValue(xaux,1,0))/2),
+           x3  =(t)*((matrix_getValue(X,2,0)+matrix_getValue(xaux,2,0))/2);
 
     matrix_value(x,0,0,x1);
     matrix_value(x,1,0,x2);

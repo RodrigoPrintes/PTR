@@ -56,8 +56,8 @@ Matrix robo_ym(Matrix ym, Matrix ym_aux, double t){
 
     Matrix m = matrix_zeros(2,1);
 
-    double ym1  =(t)*(matrix_getValue(ym,0,0)+matrix_getValue(ym_aux,0,0))/2,
-           ym2  =(t)*(matrix_getValue(ym,1,0)+matrix_getValue(ym_aux,1,0))/2;
+    double ym1  =(t)*((matrix_getValue(ym,0,0)+matrix_getValue(ym_aux,0,0))/2),
+           ym2  =(t)*((matrix_getValue(ym,1,0)+matrix_getValue(ym_aux,1,0))/2);
 
     matrix_value(m,0,0,ym1);
     matrix_value(m,1,0,ym2);

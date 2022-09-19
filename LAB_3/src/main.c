@@ -43,27 +43,17 @@ void* print_outs (void* args){
         mutexes_getX(&X);
         mutexes_getY(&Y);
         mutexes_getXdot(&Xdot);
-        fprintf(pfile,"%.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f\n", matrix_getValue(ref,0,0),matrix_getValue(ref,1,0)
+        fprintf(pfile,"%.4f,%.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f\n",t/1000, matrix_getValue(ref,0,0),matrix_getValue(ref,1,0)
 												, matrix_getValue(ym,0,0),matrix_getValue(ym,1,0)
 												, matrix_getValue(ym_dot,0,0),matrix_getValue(ym_dot,1,0)
 												, matrix_getValue(V,0,0),matrix_getValue(V,1,0)
 												, matrix_getValue(U,0,0),matrix_getValue(U,1,0)
-												, matrix_getValue(X,0,0),matrix_getValue(X,1,0)
+												, matrix_getValue(X,0,0),matrix_getValue(X,1,0),matrix_getValue(X,2,0)
 												, matrix_getValue(Xdot,0,0),matrix_getValue(Xdot,1,0)
 												, matrix_getValue(Y,0,0),matrix_getValue(Y,1,0));
 
-        printf("t = %.4f tm = %.4f",t,tm);
-        // printf(		  "%.4f,%.4f, %.4f, ", t, matrix_getValue(ref,0,0),matrix_getValue(ref,1,0));
-        // printf("%.4f, %.4f, ", matrix_getValue(ym,0,0),matrix_getValue(ym,1,0));
-        // printf("%.4f, %.4f ", matrix_getValue(ym_dot,0,0),matrix_getValue(ym_dot,1,0));
+        printf("t = %.4f tm = %.4f tt=%.f\n",t/1000,tm/1000000,(t-(tm/1000000))/1000);
         
-		
-		// printf("%.4f, %.4f, ", matrix_getValue(V,0,0),matrix_getValue(V,1,0));
-        // printf("%.4f, %.4f, ", matrix_getValue(U,0,0),matrix_getValue(U,1,0));
-        // printf("%.4f, %.4f, %.4f, ", matrix_getValue(X,0,0),matrix_getValue(X,1,0), matrix_getValue(X,2,0));
-        // printf("%.4f, %.4f, %.4f, ", matrix_getValue(Xdot,0,0),matrix_getValue(Xdot,1,0),matrix_getValue(Xdot,2,0));
-        // printf("%.4f, %.4f\n", matrix_getValue(Y,0,0),matrix_getValue(Y,1,0));
-
         clock_gettime(CLOCK_REALTIME, &ts2);
         ts3.tv_sec = 0;
         ts3.tv_nsec = T*1000000 - (ts2.tv_nsec - ts1.tv_nsec);
