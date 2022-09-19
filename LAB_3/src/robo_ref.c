@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "robo_controller.h"
-
+#include "jitter.h"
 
 #define ALPHA1 2.9
 #define ALPHA2 3.1
