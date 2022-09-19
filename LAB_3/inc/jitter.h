@@ -1,21 +1,37 @@
 #ifndef _JITTER_H
 #define _JITTER_H
 
+#define tMax 14000
 
 typedef struct Jitter
 {
     /* data */
-    double jitterRef[400];
+    double jitterRef[tMax/50 - 1];
+    double Tref[tMax/50 - 1];
     int iRef ;
-    double jitterModRef[400];
+
+    double jitterModRef[tMax/30 - 1];
+    double Tmod[tMax/30 - 1];
     int iModRef ;
-    double jitterControl[400];
+
+    double jitterControl[tMax/30 - 1];
+    double Tcontrol[tMax/30 - 1];
     int iControl;
-    double jitterLinear[400];
+
+    double jitterLinear[tMax/20 - 1];
+    double Tlinear[tMax/20 - 1];
     int iLinear;
-    double jitterRobo[400];
+
+    double jitterRobo[tMax/10 - 1];
+    double Trobo[tMax/10 - 1];
     int iRobo;
 } Jitter;
 
-void jitterRef(int v);
+double jitter(double resp, double t);
+double latencia (int tempo1, double tempo2);
+double setJitterRef(double t, double ts1, double tm,  int *i , double T);
+double *getTref();
+double *getJitterRef();
+void jitter_init();
+
 #endif

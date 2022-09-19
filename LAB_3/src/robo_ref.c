@@ -68,20 +68,24 @@ Matrix robo_ym(Matrix ym, Matrix ym_aux, double t){
 void* ref_thread(void* args) {
 
     double t = 0;       //tempo calculado
-    double tm = 0;      //tempo medido
+    double tm= 0;      //tempo medido
     double T = 50;      //milissegundos
-
+    int i    = 0;
     struct timespec ts1, ts2, ts3={0};
 
     Matrix ref = matrix_zeros(2,1);
     
     while(t <= 14000) {
         clock_gettime(CLOCK_REALTIME, &ts1);
-        tm = 1000000 * ts1.tv_nsec - tm;
+        
+        setJitterRef( t, ts1.tv_nsec,tm, &i , T);    
+        
 
+        tm = (double) ts1.tv_nsec/1000000;
         t = t + T;
 
         ref = robo_ref(t/1000);
+
         mutexes_setRef(ref);  
          
         clock_gettime(CLOCK_REALTIME, &ts2);
@@ -96,7 +100,7 @@ void *modeloRef(void*args){
     double t = 0;       //tempo calculado
     double tm = 0;      //tempo medido
     double T = 30;      //milissegundos
-
+    int i = 0;
     struct timespec ts1, ts2, ts3={0};
 
     Matrix ref    = matrix_zeros(2,1);
@@ -109,9 +113,12 @@ void *modeloRef(void*args){
 
         clock_gettime(CLOCK_REALTIME, &ts1);
 
+        setJitterModelRef(t, ts1.tv_nsec,tm, &i , T);
 
         tm = 1000000 * ts1.tv_nsec - tm;
         t = t + T;
+
+
 
         mutexes_getRef(&ref);
         mutexes_getYmdot(&ym_dot_aux);

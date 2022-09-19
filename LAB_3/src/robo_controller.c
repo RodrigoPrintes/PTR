@@ -2,6 +2,7 @@
 
 #include <time.h>
 #include "mutexes.h"
+#include "jitter.h"
 
 #define ALPHA1 2.9
 #define ALPHA2 3.1
@@ -22,7 +23,7 @@ void *controller_thread(void *args){
     double t = 0;       //tempo calculado
     double tm = 0;      //tempo medido
     double T = 30;      //milissegundos
-
+    int i = 0 ;
     struct timespec ts1, ts2, ts3={0};
 
     Matrix Y    = matrix_zeros(2,1);
@@ -32,6 +33,8 @@ void *controller_thread(void *args){
 
     while(t <= 14000) {
         clock_gettime(CLOCK_REALTIME, &ts1);
+
+        // setJitterControl();
 
         tm = 1000000 * ts1.tv_nsec - tm;
         t = t + T;
