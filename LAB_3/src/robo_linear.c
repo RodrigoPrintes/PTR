@@ -11,7 +11,7 @@
 
 /*
    *
-   * Cabeçalho
+   * 
    * 
 */
 
@@ -43,6 +43,12 @@ Matrix u (Matrix v_t, Matrix x){
    return matrix_mult(L_inversa(x), v_t);     
 }
 
+
+
+
+
+
+
 void *linear_thread(void *args){
     double t = 0;       //tempo calculado
     double tm = 0;      //tempo medido
@@ -62,9 +68,11 @@ void *linear_thread(void *args){
         t = t + T;
 
         mutexes_getX(&X);
-        mutexes_getYm(&V);
+        mutexes_getV(&V);
 
         U = u(V,X);
+
+      
 
         mutexes_setU(U);
 

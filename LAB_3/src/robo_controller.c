@@ -13,7 +13,7 @@ Matrix controller_v(Matrix y,Matrix Ym, Matrix Ym_det){
 
     Matrix v = matrix_zeros(2,1);
     matrix_value(v, 0,0, matrix_getValue(Ym_det,0,0)+ALPHA1*(matrix_getValue(Ym,0,0) - matrix_getValue(y,0,0)));
-    matrix_value(v, 1,0, matrix_getValue(Ym_det,0,1)+ALPHA2*(matrix_getValue(Ym,0,1) - matrix_getValue(y,0,1)));
+    matrix_value(v, 1,0, matrix_getValue(Ym_det,1,0)+ALPHA2*(matrix_getValue(Ym,1,0) - matrix_getValue(y,1,0)));
     
     return v;
 }
@@ -41,13 +41,10 @@ void *controller_thread(void *args){
         mutexes_getYmdot(&YMDOT);
 
         V = controller_v(Y,YM, YMDOT);
-
-      
-
+        mutexes_setV(V);
       
 
         clock_gettime(CLOCK_REALTIME, &ts2);
-
         ts3.tv_sec = 0;
         ts3.tv_nsec = T*1000000 - (ts2.tv_nsec - ts1.tv_nsec);
         nanosleep(&ts3, &ts3);
