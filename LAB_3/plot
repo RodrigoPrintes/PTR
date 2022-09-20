@@ -1,6 +1,0 @@
-%out  = readtable(,'Delimiter', ',', 'HeaderLines', , 'ReadVariableNames', true, 'Format','');
-%out = readtable("ref.csv",'Delimiter',' ','ReadVariableNames',false);
-M1 = csvread("ref.csv");
-
-
-%plot(M1(:,1),M1(:,2));
