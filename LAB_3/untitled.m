@@ -1,6 +1,6 @@
 close all, clc
 
-M = csvread("ArqGrav.csv");
+M = csvread("ArqGrav9.csv");
 
 %plot(M(:,17),M(:,18));
 %t 1,refX 2  ,refY 3, ymX 4,ymY 5, ymdotX 6 ,ymdotY 7,Vx 8,Vy 9,
