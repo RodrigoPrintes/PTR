@@ -31,7 +31,7 @@ void* saida (void* args){
         mutexes_getX(&X);
         mutexes_getY(&Y);
         mutexes_getXdot(&Xdot);
-
+        
         fprintf(pfile,"%.4f,%.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f\n",t/1000, matrix_getValue(ref,0,0),matrix_getValue(ref,1,0)
 												, matrix_getValue(ym,0,0),matrix_getValue(ym,1,0)
 												, matrix_getValue(ym_dot,0,0),matrix_getValue(ym_dot,1,0)

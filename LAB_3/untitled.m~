@@ -1,4 +1,4 @@
-close all, clc
+close all, clear all, clc
 
 M = csvread("ArqGrav.csv");
 
@@ -8,45 +8,45 @@ M = csvread("ArqGrav.csv");
 
 
 figure();
-plot(M(:,2),M(:,3));
+plot(M(:,2),M(:,3});
 title("XRef x Yref");
 
 figure();
-plot(M(:,4),M(:,5));
+plot(M{:,4},M{:,5});
 title("Xm x Ym");
 
 figure();
-plot(M(:,6),M(:,7));
+plot(M{:,6},M{:,7});
 title("Xmdot x Ymdot");
 
 figure();
-plot(M(:,8),M(:,9));
+plot(Out{:,8},Out{:,9});
 title("V");
 
 figure();
-plot(M(:,10),M(:,11));
+plot(Out{:,10},Out{:,11});
 title("U");
 
 figure();
-plot(M(:,12),M(:,13));
+plot(Out{:,12},Out{:,13});
 title("Xc vs Yc");
 
 figure();
-plot(M(:,1)/1000,M(:,12));
+plot(Out{:,1}/1000,Out{:,12});
 title("Xc vs t");
 
 figure();
-plot(M(:,1)/1000,M(:,13));
+plot(Out{:,1}/1000,Out{:,13});
 title("Yc vs t");
 
 figure();
-plot(M(:,1)/1000,M(:,14));
+plot(Out{:,1}/1000,Out{:,14});
 title("Theta vs t");
 
 figure();
-plot(M(:,15),M(:,16));
+plot(Out{:,15},Out{:,16});
 title("Xdotc vs Ydotc");
 
 figure();
-plot(M(:,17),M(:,18));
+plot(Out{:,17},Out{:,18});
 title("Y final");
