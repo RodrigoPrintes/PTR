@@ -14,6 +14,7 @@
 #include "robo_linear.h"
 #include "robo.h"
 #include "out.h"
+#include "outStatistic.h"
 #define Tmax 14000 // maximo de execução 14s
 
 
@@ -45,7 +46,7 @@ int main(int argc, char **argv) {
 	mutexes_destroy();
 	puts("end process.\nEstatistics:\n");
 
-
+	metrica();	
 
 	return 0;
 }

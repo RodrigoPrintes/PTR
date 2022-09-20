@@ -5,6 +5,7 @@
 #include <math.h>
 #include "mutexes.h"
 #include <time.h>
+#include "jitter.h"
 
 #define R  0.6*0.5
 #define X3(m ,i,j)(matrix_getValue(m,i,j))
@@ -53,7 +54,7 @@ void *linear_thread(void *args){
     double t = 0;       //tempo calculado
     double tm = 0;      //tempo medido
     double T = 20;      //milissegundos
-
+    int i = 0;
     struct timespec ts1, ts2, ts3={0};
 
     Matrix V    = matrix_zeros(2,1);
@@ -64,7 +65,9 @@ void *linear_thread(void *args){
     while(t <= 14000) {
         clock_gettime(CLOCK_REALTIME, &ts1);
 
-        tm = 1000000 * ts1.tv_nsec - tm;
+        setJitter_Linear(t, ts1.tv_nsec,tm, &i , T);
+        
+        tm = (double) ts1.tv_nsec/1000000;
         t = t + T;
 
         mutexes_getX(&X);

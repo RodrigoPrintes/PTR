@@ -78,7 +78,7 @@ void* ref_thread(void* args) {
     while(t <= 14000) {
         clock_gettime(CLOCK_REALTIME, &ts1);
         
-        setJitterRef( t, ts1.tv_nsec,tm, &i , T);    
+        setJitter_Ref( t, ts1.tv_nsec,tm, &i , T);    
         
 
         tm = (double) ts1.tv_nsec/1000000;
@@ -113,9 +113,9 @@ void *modeloRef(void*args){
 
         clock_gettime(CLOCK_REALTIME, &ts1);
 
-        setJitterModelRef(t, ts1.tv_nsec,tm, &i , T);
+        setJitter_ModelRef(t, ts1.tv_nsec,tm, &i , T);
 
-        tm = 1000000 * ts1.tv_nsec - tm;
+        tm = (double) ts1.tv_nsec/1000000;
         t = t + T;
 
 
